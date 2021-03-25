@@ -1,3 +1,5 @@
+document.getElementById("personagens").innerHTML = 22;
+
 axios
     .get('http://swapi.dev/api/people/1/')
     .then(function (response) {
