@@ -118,6 +118,7 @@ ul {
 .table {
     margin: 40px;
     width: 642px;
+    height: 450px;
     padding: 30px;
     background: #fff;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
@@ -145,4 +146,19 @@ table h5 {
 .table table {
     margin-top: 30px;
     width: 100%;
+}
+
+.content-info {
+    display: flex;
+    align-items: center;
+}
+
+.chart {
+    display: flex;
+    align-items: center;
+    width: 340px;
+    height: 450px;
+    background: #fff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
 }
