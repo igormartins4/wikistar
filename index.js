@@ -6,22 +6,19 @@ const navesContador = document.getElementById("naves");
 preencherContadores();
 
 function preencherContadores() {
-    personagensContador.innerHTML = swapiGet("people/");
+    Promise.all([
+        swapiGet("people/"),
+        swapiGet("vehicles/"),
+        swapiGet("planets/"),
+        swapiGet("starships/")
+    ]).then(function (results) {
+        personagensContador.innerHTML = results[0].data.count;
+        luasContador.innerHTML = results[1].data.count;
+        planetasContador.innerHTML = results[2].data.count;
+        navesContador.innerHTML = results[3].data.count;
+    });
 }
 
 function swapiGet(param) {
-    axios
-    .get(`http://swapi.dev/api/${param}`)
-    .then(function (response) {
-        // handle success
-        console.log(response);
-        return response.data;
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
-    });
+    return axios.get(`http://swapi.dev/api/${param}`);
 }
