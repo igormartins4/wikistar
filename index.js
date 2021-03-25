@@ -6,6 +6,31 @@ const navesContador = document.getElementById("naves");
 preencherContadores();
 preencherTabela();
 
+google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(desenharGrafico);
+
+async function desenharGrafico() {
+    const response = await swapiGet("vehicles/");
+    const vehiclesArray = response.data.results;
+    console.log(vehiclesArray);
+
+    const dataArray = [];
+    dataArray.push(["Veículos", "Passageiros"]);
+    vehiclesArray.forEach((vehicle) => {
+        dataArray.push([vehicle.name, Number(vehicle.passengers)])
+    })
+
+    var data = google.visualization.arrayToDataTable(dataArray);
+
+    var options = {
+        title: 'My Daily Activities'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+}
+
 function preencherContadores() {
     Promise.all([
         swapiGet("people/"),
@@ -23,14 +48,13 @@ function preencherContadores() {
 async function preencherTabela() {
     const response = await swapiGet("films/");
     const tableData = response.data.results;
-    console.log(tableData);
     tableData.forEach((film) => {
         $("#filmsTable").append(`<tr>
             <td>${film.title}</td>
             <td>${moment(film.release_date).format("DD/MM/YYYY")}</td>
             <td>${film.director}</td>
             <td>${film.episode_id}</td>
-        </tr>`);    
+        </tr>`);
     });
 }
 
