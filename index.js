@@ -1,4 +1,7 @@
-document.getElementById("personagens").innerHTML = 22;
+const personagensContador = document.getElementById("personagens");
+const luasContador = document.getElementById("luas");
+const planetasContador = document.getElementById("planetas");
+const navesContador = document.getElementById("naves");
 
 axios
     .get('http://swapi.dev/api/people/1/')
