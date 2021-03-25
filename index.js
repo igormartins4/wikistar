@@ -27,7 +27,7 @@ async function preencherTabela() {
     tableData.forEach((film) => {
         $("#filmsTable").append(`<tr>
             <td>${film.title}</td>
-            <td>${film.release_date}</td>
+            <td>${moment(film.release_date).format("DD/MM/YYYY")}</td>
             <td>${film.director}</td>
             <td>${film.episode_id}</td>
         </tr>`);    
