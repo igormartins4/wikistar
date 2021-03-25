@@ -22,7 +22,16 @@ function preencherContadores() {
 
 async function preencherTabela() {
     const response = await swapiGet("films/");
-    console.log(response);
+    const tableData = response.data.results;
+    console.log(tableData);
+    tableData.forEach((film) => {
+        $("#filmsTable").append(`<tr>
+            <td>${film.title}</td>
+            <td>${film.release_date}</td>
+            <td>${film.director}</td>
+            <td>${film.episode_id}</td>
+        </tr>`);    
+    });
 }
 
 function swapiGet(param) {
