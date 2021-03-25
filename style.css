@@ -11,6 +11,10 @@ ul {
     list-style: none;
 }
 
+.container {
+    display: flex;
+}
+
 .lateral-menu {
     background: #000;
     color: #fff;
@@ -45,4 +49,9 @@ ul {
 
 .settings svg {
     margin-right: 10px;
+}
+
+.content {
+    background: #f5f6fa;
+    width: 100%;
 }
