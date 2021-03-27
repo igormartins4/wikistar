@@ -60,5 +60,5 @@ async function preencherTabela() {
 }
 
 function swapiGet(param) {
-    return axios.get(`http://swapi.dev/api/${param}`);
+    return axios.get(`https://swapi.dev/api/${param}`);
 }
